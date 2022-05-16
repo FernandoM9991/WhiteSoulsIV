@@ -60,11 +60,11 @@ public class Game {
 
   }
     //if I push down arrow, then plane goes down
-
+    
 
   }
   
-  public void populateRightEdge(){
+   public void populateRightEdge(){
 
   }
   
