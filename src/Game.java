@@ -10,7 +10,7 @@ public class Game {
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
-  private String userPic = "images/user.gif";
+  private String userPic = "images/Knight.png";
   
   public Game() {
 
@@ -48,23 +48,32 @@ public class Game {
         //check case where out of bounds
       if(userRow != grid.getNumRows()){
         //change the field for userrow
-        userRow++;
+        userRow--;
       }
+
       if(key == 83)
      {
        if(userRow != grid.getNumRows())
-      userRow--;
+      userRow++;
     }
+
+
         //shift the user picture up in the array
         Location loc = new Location(userRow, 0);
-        grid.setImage(loc, "user.gif");
+        grid.setImage(loc,userPic);
         
         Location oldLoc = new Location(userRow+1, 0);
         grid.setImage(oldLoc, null);
 
   }
     //if I push down arrow, then plane goes down
-    
+    if(key == 40)
+    {
+      if(userRow != grid.getNumRows())
+      {
+        userRow++;
+      }
+    }
 
   }
   
