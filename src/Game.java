@@ -46,11 +46,15 @@ public class Game {
     //set "w" key to move the plane up
     if(key == 87){
         //check case where out of bounds
-
+      if(userRow != grid.getNumRows()){
         //change the field for userrow
-
-        userRow--;
-
+        userRow++;
+      }
+      if(key == 83)
+     {
+       if(userRow != grid.getNumRows())
+      userRow--;
+    }
         //shift the user picture up in the array
         Location loc = new Location(userRow, 0);
         grid.setImage(loc, "user.gif");
