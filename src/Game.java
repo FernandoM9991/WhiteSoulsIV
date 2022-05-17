@@ -7,6 +7,7 @@ public class Game {
 
   private Grid grid;
   private int userRow;
+  private int userCol;
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
@@ -14,13 +15,14 @@ public class Game {
   
   public Game() {
 
-    grid = new Grid(5, 10);
+    grid = new Grid(10, 10);
     userRow = 3;
+    userCol = 0;
     msElapsed = 0;
     timesGet = 0;
     timesAvoid = 0;
     updateTitle();
-    grid.setImage(new Location(userRow, 0), userPic);
+    grid.setImage(new Location(userRow, userCol), userPic);
   }
   
   public void play() {
@@ -43,39 +45,53 @@ public class Game {
     int key = grid.checkLastKeyPressed();
     System.out.println(key);
 
-    //set "w" key to move the plane up
+    //set "w" key to move the plane up/check case where out of bounds
     if(key == 87 && userRow != 0){
-        //check case where out of bounds
-
         //change the field for userrow
         userRow--;
     }
+            //shift the user picture up in the array
+            Location loc = new Location(userRow, 0);
+            grid.setImage(loc,userPic);
+            
+            Location oldLoc = new Location(userRow+1,0);
+            grid.setImage(oldLoc, null);
 
-    if(key == 83 && userRow != grid.getNumRows())
+    if(key == 83 && userRow != 0)
      {
       userRow++;
     }
+    Location newLoc = new Location(userRow, 0);
+    grid.setImage(newLoc,userPic);
+    Location old = new Location(userRow-1,0);
+    grid.setImage(old, null);
 
-
-        //shift the user picture up in the array
-        Location loc = new Location(userRow, 0);
-        grid.setImage(loc,userPic);
-        
-        Location oldLoc = new Location(userRow+1, 0);
-        grid.setImage(oldLoc, null);
-
-        //if I push down arrow, then plane goes down
-      if(key == 40)
-      {
-        if(userRow != grid.getNumRows())
-        {
-          userRow++;
-        }
-      }
-  }
+    //if I push down arrow, then plane goes down
+    if(key == 40 && userRow != grid.getNumRows())
+    { 
+        userRow++; 
+    }
+    
+    Location first = new Location(userRow, 0);
+    grid.setImage(first,userPic);
+    Location prev = new Location(userRow-1,0);
+    grid.setImage(prev, null);
+   
     
 
-  
+
+//if I push "d" key
+    if(key == 68 && userCol!=grid.getNumCols())
+    {
+        userCol++;
+    }
+
+    Location next = new Location(userRow, userCol);
+    grid.setImage(next,userPic);
+    Location previous = new Location(userRow,userCol+1);
+    grid.setImage(previous, null);
+  }
+    
   
    public void populateRightEdge(){
 
