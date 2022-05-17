@@ -44,16 +44,15 @@ public class Game {
     System.out.println(key);
 
     //set "w" key to move the plane up
-    if(key == 87){
+    if(key == 87 && userRow != 0){
         //check case where out of bounds
-      if(userRow != grid.getNumRows()){
+
         //change the field for userrow
         userRow--;
-      }
+    }
 
-      if(key == 83)
+    if(key == 83 && userRow != grid.getNumRows())
      {
-       if(userRow != grid.getNumRows())
       userRow++;
     }
 
@@ -65,17 +64,18 @@ public class Game {
         Location oldLoc = new Location(userRow+1, 0);
         grid.setImage(oldLoc, null);
 
-  }
-    //if I push down arrow, then plane goes down
-    if(key == 40)
-    {
-      if(userRow != grid.getNumRows())
+        //if I push down arrow, then plane goes down
+      if(key == 40)
       {
-        userRow++;
+        if(userRow != grid.getNumRows())
+        {
+          userRow++;
+        }
       }
-    }
-
   }
+    
+
+  
   
    public void populateRightEdge(){
 
