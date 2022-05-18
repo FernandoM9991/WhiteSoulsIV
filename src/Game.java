@@ -61,7 +61,7 @@ public class Game {
     }
     
     //if I press "s" it goes down
-    if(key == 83 && userRow != 0)
+    if(key == 83 && userRow != grid.getNumRows())
      {
       userRow++;
 
@@ -71,7 +71,7 @@ public class Game {
     grid.setImage(prev, null);
   }
 
-//if I push "d" key
+//if I push "d" it goes right
 if(key == 68 && userCol!= grid.getNumCols() )
 {
     userCol++;
@@ -159,8 +159,7 @@ if(key == 37 && userCol!= grid.getNumCols() )
       grid.setImage(loc, this.getPic);
       appeared = true;
     }
-    if(appeared)
-    {}
+
   }
 
   }
