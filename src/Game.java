@@ -12,7 +12,7 @@ public class Game {
   private int timesGet;
   private int timesAvoid;
   private String userPic = "images/Knight.png";
-
+  private String getPic = "images/potion.jpg";
 
   public Game() {
 
@@ -141,9 +141,32 @@ if(key == 37 && userCol!= grid.getNumCols() )
     
   
    public void populateRightEdge(){
+   //get last column
+    int lastCol = grid.getNumCols()-1;
+    int lastRow = grid.getNumRows()-1;
+   //loop through last column
+  for(int r = 0; r < lastRow; r++)
+  {
+    //find loc for each cell in last row
+   Location loc = new Location(r, lastCol);
+   
+   //get random number to choose if obj appears
+   double rng = Math.random();
+   double rate = 0.3;
+
+   // decide if object should appear
+    if(rng < rate){
+      grid.setImage(loc, this.getPic);
+    }
 
   }
   
+
+
+  }
+
+  
+
   public void scrollLeft(){
 
   }
