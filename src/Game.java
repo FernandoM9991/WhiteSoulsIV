@@ -153,15 +153,15 @@ if(key == 37 && userCol!= grid.getNumCols() )
    //get random number to choose if obj appears
    double rng = Math.random();
    double rate = 0.3;
-
+   boolean appeared = false;
    // decide if object should appear
     if(rng < rate){
       grid.setImage(loc, this.getPic);
+      appeared = true;
     }
-
+    if(appeared)
+    {}
   }
-  
-
 
   }
 
