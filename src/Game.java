@@ -12,7 +12,8 @@ public class Game {
   private int timesGet;
   private int timesAvoid;
   private String userPic = "images/Knight.png";
-  
+
+
   public Game() {
 
     grid = new Grid(10, 10);
