@@ -47,50 +47,96 @@ public class Game {
     System.out.println(key);
 
     //set "w" key to move the plane up/check case where out of bounds
-    if(key == 87 && userRow != 0){
+    if(key == 87 && userRow != 0)
+    {
         //change the field for userrow
         userRow--;
-    }
+    
             //shift the user picture up in the array
-            Location loc = new Location(userRow, 0);
-            grid.setImage(loc,userPic);
+            Location next = new Location(userRow, userCol);
+            grid.setImage(next,userPic);
             
-            Location oldLoc = new Location(userRow+1,0);
-            grid.setImage(oldLoc, null);
-
+            Location prev = new Location(userRow+1,userCol);
+            grid.setImage(prev, null);
+    }
+    
+    //if I press "s" it goes down
     if(key == 83 && userRow != 0)
      {
       userRow++;
-    }
-    Location newLoc = new Location(userRow, 0);
-    grid.setImage(newLoc,userPic);
-    Location old = new Location(userRow-1,0);
-    grid.setImage(old, null);
 
+    Location next = new Location(userRow, userCol);
+    grid.setImage(next,userPic);
+    Location prev = new Location(userRow-1,userCol);
+    grid.setImage(prev, null);
+  }
+
+//if I push "d" key
+if(key == 68 && userCol!= grid.getNumCols() )
+{
+    userCol++;
+
+Location next = new Location(userRow, userCol);
+grid.setImage(next,userPic);
+Location prev = new Location(userRow,userCol-1);
+grid.setImage(prev, null);
+}
+
+//if I press "a" it goes left
+if(key == 65 && userCol!= grid.getNumCols() )
+{
+  userCol--;
+
+ Location next = new Location(userRow, userCol);
+ grid.setImage(next,userPic);
+ Location prev = new Location(userRow,userCol+1);
+ grid.setImage(prev, null);
+    }
+
+    //if I push up arrow, then plane goes up
+    if(key == 38 && userRow != grid.getNumRows())
+    { 
+        userRow--; 
+     
+    Location next = new Location(userRow, userCol);
+    grid.setImage(next,userPic);
+    Location prev = new Location(userRow+1,userCol);
+    grid.setImage(prev, null);
+    }
+    
     //if I push down arrow, then plane goes down
     if(key == 40 && userRow != grid.getNumRows())
     { 
         userRow++; 
-    }
-    
-    Location first = new Location(userRow, 0);
-    grid.setImage(first,userPic);
-    Location prev = new Location(userRow-1,0);
-    grid.setImage(prev, null);
-   
-    
-
-
-//if I push "d" key
-    if(key == 68 && userCol!=grid.getNumCols())
-    {
-        userCol++;
-    }
-
+     
     Location next = new Location(userRow, userCol);
     grid.setImage(next,userPic);
-    Location previous = new Location(userRow,userCol+1);
-    grid.setImage(previous, null);
+    Location prev = new Location(userRow-1,userCol);
+    grid.setImage(prev, null);
+    }
+    
+//if I push right arrow it shifts right
+if(key == 39 && userCol!= grid.getNumCols() )
+{
+    userCol++;
+
+Location next = new Location(userRow, userCol);
+grid.setImage(next,userPic);
+Location prev = new Location(userRow,userCol-1);
+grid.setImage(prev, null);
+}
+
+//if I push left arrow it shifts left
+if(key == 37 && userCol!= grid.getNumCols() )
+{
+  userCol--;
+
+ Location next = new Location(userRow, userCol);
+ grid.setImage(next,userPic);
+ Location prev = new Location(userRow,userCol+1);
+ grid.setImage(prev, null);
+    }
+
   }
     
   
