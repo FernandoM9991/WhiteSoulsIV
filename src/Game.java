@@ -8,11 +8,13 @@ public class Game {
   private Grid grid;
   private int userRow;
   private int userCol;
+  private int getCol;
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
   private String userPic = "images/Knight.png";
   private String getPic = "images/potion.png";
+private String skullEnemy = "images/skull.png";
 
   public Game() {
 
@@ -23,6 +25,7 @@ public class Game {
     timesGet = 0;
     timesAvoid = 0;
     updateTitle();
+   
     grid.setImage(new Location(userRow, userCol), userPic);
   }
   
@@ -72,7 +75,7 @@ public class Game {
   }
 
 //if I push "d" it goes right
-if(key == 68 && userCol!= grid.getNumCols() )
+if(key == 68 && userCol < grid.getNumCols())
 {
     userCol++;
 
@@ -141,23 +144,21 @@ if(key == 37 && userCol!= grid.getNumCols() )
     
   
    public void populateRightEdge(){
-   //get last column
-    int lastCol = grid.getNumCols()-1;
-    int lastRow = grid.getNumRows()-1;
    //loop through last column
+   int lastCol = grid.getNumCols()-1;
+   int lastRow = grid.getNumRows()-1;
   for(int r = 0; r < lastRow; r++)
   {
+   
     //find loc for each cell in last row
    Location loc = new Location(r, lastCol);
    
    //get random number to choose if obj appears
    double rng = Math.random();
-   double rate = 0.3;
-   boolean appeared = false;
+   double rate = 0.01;
    // decide if object should appear
     if(rng < rate){
       grid.setImage(loc, this.getPic);
-      appeared = true;
     }
 
   }
@@ -167,8 +168,34 @@ if(key == 37 && userCol!= grid.getNumCols() )
   
 
   public void scrollLeft(){
+//shifts potion image to left
+      //look at right col and left col
+       int lastCol = grid.getNumCols()-1;
+       int lastRow = grid.getNumRows()-1;
+       
+       for(int r = 0; r < lastRow; r++){
+       for(int c = 1; c< lastCol; c++){
+        Location loc = new Location(r,c);
+        Location newLoc = new Location(r, c-1);
+
+        String img = grid.getImage(loc);
+
+        if(img != null)
+        {
+          grid.setImage(newLoc, skullEnemy);
+          grid.setImage(loc, null);
+        }
+
+        if()
+        {
+
+        }
+      }
+    }
+      //move items from right to left
 
   }
+
   
   public void handleCollision(Location loc) {
 
