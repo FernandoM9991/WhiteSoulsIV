@@ -186,10 +186,10 @@ if(key == 37 && userCol!= grid.getNumCols() )
           grid.setImage(loc, null);
         }
 
-        if()
-        {
-
-        }
+        if(newLoc.getCol() <= 0)
+         {
+          grid.setImage(newLoc, null);
+         }
       }
     }
       //move items from right to left
