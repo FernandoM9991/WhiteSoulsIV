@@ -13,7 +13,7 @@ public class Game {
   private int timesGet;
   private int timesAvoid;
   private String userPic = "images/Knight.png";
-  private String getPic = "images/potion.png";
+  private String redWaterPic = "images/potion.png";
 private String skullEnemy = "images/skull.png";
 
   public Game() {
@@ -158,8 +158,18 @@ if(key == 37 && userCol!= grid.getNumCols() )
    double rate = 0.01;
    // decide if object should appear
     if(rng < rate){
-      grid.setImage(loc, this.getPic);
+      grid.setImage(loc, this.redWaterPic);
     }
+
+    Location skullLoc = new Location(r, lastCol);
+
+    double skullRng = Math.random();
+    double skullRate = 0.05;
+
+    if(skullRng < skullRate){
+      grid.setImage(skullLoc, this.skullEnemy);
+    }
+
 
   }
 
@@ -168,33 +178,41 @@ if(key == 37 && userCol!= grid.getNumCols() )
   
 
   public void scrollLeft(){
-//shifts potion image to left
-      //look at right col and left col
-       int lastCol = grid.getNumCols()-1;
-       int lastRow = grid.getNumRows()-1;
-       
-       for(int r = 0; r < lastRow; r++){
-       for(int c = 1; c< lastCol; c++){
-        Location loc = new Location(r,c);
-        Location newLoc = new Location(r, c-1);
-
-        String img = grid.getImage(loc);
-
-        if(img != null)
-        {
-          grid.setImage(newLoc, skullEnemy);
-          grid.setImage(loc, null);
+    //shifts potion image to left
+          //look at right col and left col
+           int lastCol = grid.getNumCols()-1;
+           int lastRow = grid.getNumRows()-1;
+        
+  for(int r = 0; r <= lastRow; r++){
+           
+    for(int c = 1; c <= lastCol; c++){
+            Location loc = new Location(r,c);
+            Location newLoc = new Location(r, c-1);
+      
+            String img = grid.getImage(loc);
+            System.out.println(loc + img);
+      
+            if(skullEnemy.equals(img))
+            {
+              grid.setImage(newLoc, skullEnemy);
+              grid.setImage(loc, null);
+            }
+      
+            if(redWaterPic.equals(img))
+            {
+              grid.setImage(newLoc, redWaterPic);
+              grid.setImage(loc, null);
+            }
+      
+            if(newLoc.getCol() <= 0)
+             {
+              grid.setImage(newLoc, null);
+             }
+          }
         }
-
-        if(newLoc.getCol() <= 0)
-         {
-          grid.setImage(newLoc, null);
-         }
+          //move items from right to left
+        grid.setImage(new Location(userRow, userCol), userPic);
       }
-    }
-      //move items from right to left
-
-  }
 
   
   public void handleCollision(Location loc) {
