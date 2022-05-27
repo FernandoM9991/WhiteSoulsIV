@@ -213,7 +213,7 @@ if(key == 37 && userCol!= 0)
           //move items from right to left
         grid.setImage(new Location(userRow, userCol), userPic);
       }
-
+//weirdo change
   
   public void handleCollision(Location loc) {
 
