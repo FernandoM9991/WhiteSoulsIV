@@ -14,7 +14,9 @@ public class Game {
   private int timesAvoid;
   private String userPic = "images/Knight.png";
   private String redWaterPic = "images/potion.png";
-private String skullEnemy = "images/skull.png";
+  private String skullEnemy = "images/skull.png";
+  private int health = 10;
+  private boolean isDead = false;
 
   public Game() {
 
@@ -141,7 +143,13 @@ if(key == 37 && userCol!= 0)
     }
 
   }
-    
+
+  public int health(){
+    return health;
+  }
+
+  
+  
   
    public void populateRightEdge(){
    //loop through last column
@@ -213,10 +221,20 @@ if(key == 37 && userCol!= 0)
           //move items from right to left
         grid.setImage(new Location(userRow, userCol), userPic);
       }
-//weirdo change
   
   public void handleCollision(Location loc) {
+    Location userLoc = new Location(userRow, userCol);
+    if(grid.getImage(userLoc).equals(skullEnemy)){
 
+      health -= 1;
+      System.out.println(health);
+  
+      if(health == 0 ){
+        
+        isGameOver();
+  
+      }
+    }
   }
   
   public int getScore() {
