@@ -62,9 +62,9 @@ private String skullEnemy = "images/skull.png";
             Location prev = new Location(userRow+1,userCol);
             grid.setImage(prev, null);
     }
-    
+
     //if I press "s" it goes down
-    if(key == 83 && userRow != grid.getNumRows())
+    if(key == 83 && userRow != grid.getNumRows()-1)
      {
       userRow++;
 
@@ -75,7 +75,7 @@ private String skullEnemy = "images/skull.png";
   }
 
 //if I push "d" it goes right
-if(key == 68 && userCol < grid.getNumCols())
+if(key == 68 && userCol < grid.getNumCols()-1)
 {
     userCol++;
 
@@ -86,7 +86,7 @@ grid.setImage(prev, null);
 }
 
 //if I press "a" it goes left
-if(key == 65 && userCol!= grid.getNumCols() )
+if(key == 65 && userCol != 0)
 {
   userCol--;
 
@@ -97,7 +97,7 @@ if(key == 65 && userCol!= grid.getNumCols() )
     }
 
     //if I push up arrow, then plane goes up
-    if(key == 38 && userRow != grid.getNumRows())
+    if(key == 38 && userRow != 0)
     { 
         userRow--; 
      
@@ -108,7 +108,7 @@ if(key == 65 && userCol!= grid.getNumCols() )
     }
     
     //if I push down arrow, then plane goes down
-    if(key == 40 && userRow != grid.getNumRows())
+    if(key == 40 && userRow != grid.getNumRows()-1)
     { 
         userRow++; 
      
@@ -119,7 +119,7 @@ if(key == 65 && userCol!= grid.getNumCols() )
     }
     
 //if I push right arrow it shifts right
-if(key == 39 && userCol!= grid.getNumCols() )
+if(key == 39 && userCol!= grid.getNumCols()-1)
 {
     userCol++;
 
@@ -130,7 +130,7 @@ grid.setImage(prev, null);
 }
 
 //if I push left arrow it shifts left
-if(key == 37 && userCol!= grid.getNumCols() )
+if(key == 37 && userCol!= 0)
 {
   userCol--;
 
