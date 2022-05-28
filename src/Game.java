@@ -191,14 +191,17 @@ if(key == 37 && userCol!= 0)
            int lastCol = grid.getNumCols()-1;
            int lastRow = grid.getNumRows()-1;
         
-  for(int r = 0; r <= lastRow; r++){
-           
+  for(int r = 0; r <= lastRow; r++){           
     for(int c = 1; c <= lastCol; c++){
+
             Location loc = new Location(r,c);
             Location newLoc = new Location(r, c-1);
       
             String img = grid.getImage(loc);
-            System.out.println(loc + img);
+            //System.out.println(loc + img);
+
+            
+
       
             if(skullEnemy.equals(img))
             {
