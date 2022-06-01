@@ -198,6 +198,7 @@ if(key == 37 && userCol!= 0)
             Location newLoc = new Location(r, c-1);
       
             String img = grid.getImage(loc);
+            String newImg = grid.getImage(newLoc);
             System.out.println(loc + img);
       
             if(skullEnemy.equals(img))
@@ -211,16 +212,22 @@ if(key == 37 && userCol!= 0)
               grid.setImage(newLoc, redWaterPic);
               grid.setImage(loc, null);
             }
-      
             if(newLoc.getCol() <= 0)
-             {
-              grid.setImage(newLoc, null);
-             }
+            {
+             grid.setImage(newLoc, null);
+            }
+            }
+
+
+          //move items from right to left
+          grid.setImage(new Location(userRow, userCol), userPic);
           }
         }
-          //move items from right to left
-        grid.setImage(new Location(userRow, userCol), userPic);
-      }
+
+
+
+      
+    
   
   public void handleCollision(Location loc) {
     Location userLoc = new Location(userRow, userCol);
