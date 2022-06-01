@@ -191,8 +191,7 @@ if(key == 37 && userCol!= 0)
            int lastCol = grid.getNumCols()-1;
            int lastRow = grid.getNumRows()-1;
         
-  for(int r = 0; r <= lastRow; r++){
-           
+  for(int r = 0; r <= lastRow; r++){           
     for(int c = 1; c <= lastCol; c++){
             Location loc = new Location(r,c);
             Location newLoc = new Location(r, c-1);
@@ -200,7 +199,7 @@ if(key == 37 && userCol!= 0)
             String img = grid.getImage(loc);
             String newImg = grid.getImage(newLoc);
             System.out.println(loc + img);
-      
+  
             if(skullEnemy.equals(img))
             {
               grid.setImage(newLoc, skullEnemy);
@@ -235,12 +234,7 @@ if(key == 37 && userCol!= 0)
 
       health -= 1;
       System.out.println(health);
-  
-      if(health == 0 ){
-        
-        isGameOver();
-  
-      }
+
     }
   }
   
@@ -253,7 +247,15 @@ if(key == 37 && userCol!= 0)
   }
   
   public boolean isGameOver() {
-    return false;
+
+      
+    if(health == 0 ){
+        
+      isDead = true;
+
+    }
+    
+    return isDead;
   }
     
 
