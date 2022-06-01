@@ -231,12 +231,7 @@ if(key == 37 && userCol!= 0)
 
       health -= 1;
       System.out.println(health);
-  
-      if(health == 0 ){
-        
-        isGameOver();
-  
-      }
+
     }
   }
   
@@ -249,7 +244,15 @@ if(key == 37 && userCol!= 0)
   }
   
   public boolean isGameOver() {
-    return false;
+
+      
+    if(health == 0 ){
+        
+      isDead = true;
+
+    }
+    
+    return isDead;
   }
     
 
