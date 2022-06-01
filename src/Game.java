@@ -144,9 +144,7 @@ if(key == 37 && userCol!= 0)
 
   }
 
-  public int health(){
-    return health;
-  }
+  
 
   
   
@@ -202,6 +200,10 @@ if(key == 37 && userCol!= 0)
   
             if(skullEnemy.equals(img))
             {
+
+                health -= 1;
+                System.out.println(health);
+
               grid.setImage(newLoc, skullEnemy);
               grid.setImage(loc, null);
             }
