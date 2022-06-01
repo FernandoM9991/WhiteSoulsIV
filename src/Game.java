@@ -231,8 +231,8 @@ if(key == 37 && userCol!= 0)
     
   
   public void handleCollision(Location loc) {
-    Location userLoc = new Location(userRow, userCol + 1);
-    if(grid.getImage(userLoc).equals(skullEnemy)){
+    Location aboutToTouch = new Location(userRow, userCol + 1);
+    if(grid.getImage(aboutToTouch).equals(skullEnemy)){
 
       health -= 1;
       System.out.println(health);
@@ -256,7 +256,7 @@ if(key == 37 && userCol!= 0)
       isDead = true;
 
     }
-
+    
     return isDead;
   }
     
