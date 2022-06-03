@@ -21,7 +21,7 @@ public class Game {
   private boolean isDead = false;
 
   public Game() {
-
+    WavPlayer.play("Sounds/hauntedCaverns.wav");
     grid = new Grid(10, 10);
     userRow = 3;
     userCol = 0;
@@ -222,10 +222,8 @@ if(key == 37 && userCol!= 0)
           grid.setImage(new Location(userRow, userCol), userPic);
           }
 
-          if(userRow == skullRow&& userCol == skullCol)
-          {
+
               handleCollision(new Location(skullRow,skullCol));
-          }
         }
 
 
@@ -235,6 +233,8 @@ if(key == 37 && userCol!= 0)
   
   public void handleCollision(Location loc) {
     Location aboutToTouch = new Location(userRow, userCol + 1);
+    
+    //this takes away health if you avoid the skull just before it touches you..hmmmmmmm
     if(aboutToTouch.equals(loc)){
 
       health -= 1;
