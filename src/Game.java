@@ -15,6 +15,8 @@ public class Game {
   private String userPic = "images/Knight.png";
   private String redWaterPic = "images/potion.png";
   private String skullEnemy = "images/skull.png";
+  private int skullRow;
+  private int skullCol;
   private int health = 10;
   private boolean isDead = false;
 
@@ -193,19 +195,17 @@ if(key == 37 && userCol!= 0)
     for(int c = 1; c <= lastCol; c++){
             Location loc = new Location(r,c);
             Location newLoc = new Location(r, c-1);
-      
+
             String img = grid.getImage(loc);
             String newImg = grid.getImage(newLoc);
             System.out.println(loc + img);
   
             if(skullEnemy.equals(img))
             {
-
-                health -= 1;
-                System.out.println(health);
-
               grid.setImage(newLoc, skullEnemy);
               grid.setImage(loc, null);
+              skullRow = newLoc.getRow();
+              skullCol = newLoc.getCol();
             }
       
             if(redWaterPic.equals(img))
@@ -218,10 +218,13 @@ if(key == 37 && userCol!= 0)
              grid.setImage(newLoc, null);
             }
             }
-
-
           //move items from right to left
           grid.setImage(new Location(userRow, userCol), userPic);
+          }
+
+          if(userRow == skullRow&& userCol == skullCol)
+          {
+              handleCollision(new Location(skullRow,skullCol));
           }
         }
 
@@ -232,7 +235,7 @@ if(key == 37 && userCol!= 0)
   
   public void handleCollision(Location loc) {
     Location aboutToTouch = new Location(userRow, userCol + 1);
-    if(grid.getImage(aboutToTouch).equals(skullEnemy)){
+    if(aboutToTouch.equals(loc)){
 
       health -= 1;
       System.out.println(health);
