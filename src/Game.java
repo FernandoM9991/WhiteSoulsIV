@@ -198,7 +198,7 @@ if(key == 37 && userCol!= 0)
 
             String img = grid.getImage(loc);
             String newImg = grid.getImage(newLoc);
-            System.out.println(loc + img);
+            // System.out.println(loc + img);
   
             if(skullEnemy.equals(img))
             {
@@ -207,7 +207,9 @@ if(key == 37 && userCol!= 0)
               skullRow = newLoc.getRow();
               skullCol = newLoc.getCol();
             }
-      
+
+
+
             if(redWaterPic.equals(img))
             {
               grid.setImage(newLoc, redWaterPic);
@@ -217,13 +219,14 @@ if(key == 37 && userCol!= 0)
             {
              grid.setImage(newLoc, null);
             }
+            
             }
           //move items from right to left
           grid.setImage(new Location(userRow, userCol), userPic);
+        
           }
-
-
-              handleCollision(new Location(skullRow,skullCol));
+          if(userRow == skullRow && userCol == skullCol)
+          handleCollision(new Location(skullRow,skullCol));
         }
 
 
@@ -232,17 +235,18 @@ if(key == 37 && userCol!= 0)
     
   
   public void handleCollision(Location loc) {
-    Location aboutToTouch = new Location(userRow, userCol + 1);
+    // Location aboutToTouch = new Location(userRow, userCol+1);
     
     //this takes away health if you avoid the skull just before it touches you..hmmmmmmm
-    if(aboutToTouch.equals(loc)){
+   
 
       health -= 1;
       System.out.println(health);
 
-    }
+
   }
-  
+
+
   public int getScore() {
     return health;
   }
