@@ -17,11 +17,13 @@ public class Game {
   private String skullEnemy = "images/skull.png";
   private int skullRow;
   private int skullCol;
+  private int potionRow;
+  private int potionCol;
   private int health = 10;
   private boolean isDead = false;
 
   public Game() {
-    WavPlayer.play("Sounds/hauntedCaverns.wav");
+    // WavPlayer.play("Sounds/hauntedCaverns.wav");
     grid = new Grid(10, 10);
     userRow = 3;
     userCol = 0;
@@ -206,6 +208,8 @@ if(key == 37 && userCol!= 0)
               grid.setImage(loc, null);
               skullRow = newLoc.getRow();
               skullCol = newLoc.getCol();
+              if(userRow == skullRow && userCol == skullCol)
+              handleCollision(newLoc);
             }
 
 
@@ -214,6 +218,10 @@ if(key == 37 && userCol!= 0)
             {
               grid.setImage(newLoc, redWaterPic);
               grid.setImage(loc, null);
+              potionRow = newLoc.getRow();
+              potionCol = newLoc.getCol();
+             if(userRow == potionRow && userCol == potionCol)
+              heal(newLoc);
             }
             if(newLoc.getCol() <= 0)
             {
@@ -225,8 +233,7 @@ if(key == 37 && userCol!= 0)
           grid.setImage(new Location(userRow, userCol), userPic);
         
           }
-          if(userRow == skullRow && userCol == skullCol)
-          handleCollision(new Location(skullRow,skullCol));
+       
         }
 
 
@@ -235,17 +242,15 @@ if(key == 37 && userCol!= 0)
     
   
   public void handleCollision(Location loc) {
-    // Location aboutToTouch = new Location(userRow, userCol+1);
-    
-    //this takes away health if you avoid the skull just before it touches you..hmmmmmmm
-   
-
       health -= 1;
       System.out.println(health);
-
-
   }
 
+  public void heal(Location loc)  {
+    if(health<10)
+    health++;
+    System.out.println(health);
+  }
 
   public int getScore() {
     return health;
