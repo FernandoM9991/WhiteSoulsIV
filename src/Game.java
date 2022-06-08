@@ -12,7 +12,7 @@ public class Game {
   private int msElapsed;
   private int timesGet;
   private int timesAvoid;
-  private String userPic = "images/Knight.png";
+  private String userPic = "images/test2.gif";
   private String redWaterPic = "images/potion.png";
   private String skullEnemy = "images/skull.png";
   private int skullRow;
