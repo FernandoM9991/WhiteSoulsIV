@@ -24,7 +24,7 @@ public class Game {
 
   public Game() {
     // WavPlayer.play("Sounds/hauntedCaverns.wav");
-    grid = new Grid(10, 10);
+    grid = new Grid(13, 20);
     userRow = 3;
     userCol = 0;
     msElapsed = 0;
@@ -38,6 +38,7 @@ public class Game {
   public void play() {
 
     while (!isGameOver()) {
+      grid.setBackground("images/darkSouls.jpg");
       grid.pause(100);
       handleKeyPress();
       if (msElapsed % 300 == 0) {
