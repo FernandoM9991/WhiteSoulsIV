@@ -23,7 +23,7 @@ public class Game {
   private boolean isDead = false;
 
   public Game() {
-    // WavPlayer.play("Sounds/hauntedCaverns.wav");
+    WavPlayer.play("Sounds/hauntedCaverns.wav");
     grid = new Grid(10, 10);
     userRow = 3;
     userCol = 0;
