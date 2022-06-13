@@ -33,6 +33,7 @@ public class Game {
     updateTitle();
    
     grid.setImage(new Location(userRow, userCol), userPic);
+    grid.fullscreen();
   }
   
   public void play() {
